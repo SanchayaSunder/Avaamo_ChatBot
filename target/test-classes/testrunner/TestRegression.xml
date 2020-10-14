@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Ira Agent Test Suite" verbose="5">
+<listeners>
+
+<listener class-name="com.qa.avaamo.listeners.ExtentReportListener"/>
+
+</listeners>
+	<test name="IRA Test Agent regression Test">
+		<classes>
+			<class name="com.qa.avaamo.testPages.IraChatBotTest"/>
+			
+			
+		</classes>
+	</test>
+</suite>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" verbose="5" name="Failed suite [Ira Agent Test Suite]">
+  <listeners>
+    <listener class-name="com.qa.avaamo.listeners.ExtentReportListener"/>
+  </listeners>
+  <test thread-count="5" verbose="5" name="IRA Test Agent regression Test(failed)">
+    <classes>
+      <class name="com.qa.avaamo.testPages.IraChatBotTest">
+        <methods>
+          <include name="setup"/>
+          <include name="logger"/>
+          <include name="teardown"/>
+        </methods>
+      </class> <!-- com.qa.avaamo.testPages.IraChatBotTest -->
+    </classes>
+  </test> <!-- IRA Test Agent regression Test(failed) -->
+</suite> <!-- Failed suite [Ira Agent Test Suite] -->
