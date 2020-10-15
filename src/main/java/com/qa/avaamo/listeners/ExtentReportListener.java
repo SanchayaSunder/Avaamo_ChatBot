@@ -16,7 +16,6 @@ import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
@@ -61,7 +60,7 @@ public class ExtentReportListener extends BasePage implements ITestListener {
 		htmlReporter.config().setDocumentTitle("Automation Test Results");
 		htmlReporter.config().setReportName("Automation Test Results");
 		htmlReporter.config().setTestViewChartLocation(ChartLocation.TOP);
-		htmlReporter.config().setTheme(Theme.STANDARD);
+		htmlReporter.config().setTheme(Theme.DARK);
 
 		extent = new ExtentReports();
 		extent.attachReporter(htmlReporter);
@@ -98,15 +97,17 @@ public class ExtentReportListener extends BasePage implements ITestListener {
 		 * methodName = StringUtils.capitalize(StringUtils.join(StringUtils.
 		 * splitByCharacterTypeCamelCase(methodName), StringUtils.SPACE));
 		 */
-		logger.assignCategory(className);
+		//logger.assignCategory(className);
 		test.set(logger);
 		test.get().getModel().setStartTime(getTime(result.getStartMillis()));
 	}
 
 	public synchronized void onTestSuccess(ITestResult result) {
 		System.out.println((result.getMethod().getMethodName() + " passed!"));
+		
 		WebDriver driver=((IraChatBotTest)result.getInstance()).driver;
 		pageChatBot=new IraTestAgentPage(driver);
+		System.out.println(pageChatBot.getIraDefaultResponse());
 		//String Botresp=pageChatBot.getAllBotResponse();
 		test.get().pass("Test passed");
 		test.get().getModel().setEndTime(getTime(result.getEndMillis()));
@@ -120,13 +121,14 @@ public class ExtentReportListener extends BasePage implements ITestListener {
 		String methodname=res.getMethod().getMethodName();
 		String exceptionmessage=Arrays.toString(res.getThrowable().getStackTrace());
 		
-		logger.fail("<details><summary><b><font color=red>Exception occured, click to see details:" + "</font></b></summary>" + exceptionmessage.replaceAll(",", "<br>")+"</details> \n");
 		WebDriver driver=((IraChatBotTest)res.getInstance()).driver;
 		String path=takeScreenShot(res.getMethod().getMethodName(),driver);
 		try
 		{
-			logger.fail("<b><font color=red>"+"Screenshot of failure"+"</font></b>",
-					MediaEntityBuilder.createScreenCaptureFromPath(path).build());
+			logger.fail("<details><summary><b><font color=red>Exception occured, click to see details and screenshot below:" + "</font></b></summary>" + exceptionmessage.replaceAll(",", "<br>")+"</details> \n.",MediaEntityBuilder.createScreenCaptureFromPath(path).build());
+			
+		//	logger.fail("<b><font color=red>"+"Screenshot of failure"+"</font></b>",
+				//	MediaEntityBuilder.createScreenCaptureFromPath(path).build());
 		
 		}
 		catch(IOException e)
@@ -135,7 +137,7 @@ public class ExtentReportListener extends BasePage implements ITestListener {
 		}
 		String logText="<b>Test Method"+methodname+"Failed</b>";
 		Markup m=MarkupHelper.createLabel(logText, ExtentColor.RED);
-		logger.log(Status.FAIL, m);
+		//logger.log(Status.FAIL, m);
 		test.get().getModel().setEndTime(getTime(res.getEndMillis()));
 		
 	}
@@ -144,6 +146,8 @@ public class ExtentReportListener extends BasePage implements ITestListener {
 		System.out.println((result.getMethod().getMethodName() + " skipped!"));
 		
 		test.get().getModel().setEndTime(getTime(result.getEndMillis()));
+		
+		
 	}
 
 	public synchronized void onTestFailedButWithinSuccessPercentage(ITestResult result) {

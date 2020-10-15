@@ -9,8 +9,13 @@
       <class name="com.qa.avaamo.testPages.IraChatBotTest">
         <methods>
           <include name="setup"/>
-          <include name="logger"/>
+          <include name="getMenuOptions"/>
+          <include name="sendQueryTestBot"/>
+          <include name="getMessagesFromBot"/>
+          <include name="verifyPageTitle"/>
+          <include name="verifyGetStarted"/>
           <include name="teardown"/>
+          <include name="sendQueryNewTest"/>
         </methods>
       </class> <!-- com.qa.avaamo.testPages.IraChatBotTest -->
     </classes>

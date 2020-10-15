@@ -14,6 +14,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import com.qa.avaamo.util.Constants;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BasePage {
@@ -57,7 +59,7 @@ public class BasePage {
 	{
 		prop=new Properties();
 		try {
-			FileInputStream ip=new FileInputStream("D:\\SanchayaJavaPractise\\SAN DOWNLOADS\\Sanchaya downloads\\Sanchayadownloadworkspace\\IraAIAgentOctober2020\\src\\main\\java\\com\\qa\\avaamo\\config\\config.properties");
+			FileInputStream ip=new FileInputStream(Constants.filepath);
 			prop.load(ip);
 		} 
 		catch (FileNotFoundException e) {

@@ -34,25 +34,20 @@ public class IraTestAgentPage extends BasePage {
 	By togglemenu=By.xpath("//div[contains(@title,'Toggle Menu')]");
 	By Sendmessage=By.xpath("//div//textarea[@name='message']");
 	By SendBtn=By.xpath("//div[contains(text(),'Send')]");
-	
 	By IraMessagelistresponse=By.cssSelector("#messages-list .not-mine .text-content");
 	By CustomerMessagelistresponse=By.cssSelector("#messages-list .mine .text-content");
 	By AllMessages=By.cssSelector("#messages-list .text-content");
 	By SwitchToBot=By.xpath("//div[contains(@title,'Switch to bot menu')]");
 	By StartOver=By.xpath("//a[contains(@actionname,'Start Over')]");
-	By DownloadPolicylist=By.xpath("//div[@class='default_card_link']//a[text()='Download Motor Policy']");
-	
+	By DownloadPolicylist=By.xpath("//div[@class='default_card_link']//a[text()='Download Motor Policy']");	
 	By DownloadLink=By.xpath("//a[text()='Download']");
-	
 	By PolicyHolderFullName=By.xpath("//div//input[contains(@id,'single_line_text')]");
-	By PolicyHolderAddress=By.xpath("//div//textarea[contains(@id,'data_capture')]");
-	
+	By PolicyHolderAddress=By.xpath("//div//textarea[contains(@id,'data_capture')]");	
 	By GenderOptions=By.xpath("//div//span[contains(@class,'composer__container__preview__option__circle')]");
 	By StarRating= By.xpath("//span[@class='star-cb-group']//label[1]");
 	By PicklistVisitedOften=By.xpath("//input[contains(@id,'picklist')]");
 	By RareOption=By.xpath("//ul//li[contains(text(),'Rare')]");
 	By SubmitBtn=By.cssSelector(".default_card_submit");
-	
 	By GoogleTestLink=By.xpath("//div//a[contains(text(),'Google')]");
 	By GoogleCloseBtn=By.xpath("//div[contains(@id,'webview_container')]//button[@class='close']");
 	By CallLink=By.xpath("//div//a[contains(text(),'Call')]");
@@ -76,7 +71,7 @@ public class IraTestAgentPage extends BasePage {
 	{
 		//util.WaitforTitlePresent(Constants.IraPageTitle, Constants.WaitTimeInSec);
 		String title=driver.getTitle();
-		System.out.println("login title is: "+title);
+		System.out.println("Page title is: "+title);
 		return title;
 	}
 	
@@ -96,22 +91,16 @@ public class IraTestAgentPage extends BasePage {
 	public boolean notificationMessageEnabled()
 	{
 		util.WaitForElementPresent(Constants.WaitTimeInSec, Welcometxt);
-		return driver.findElement(Welcometxt).isEnabled();
-		
-		
+		return driver.findElement(Welcometxt).isEnabled();		
 	}
 	
-
 	public void notificationMessageClick()
 	{
 		if(notificationMessageEnabled())
-		util.doClick(Welcometxt);
-		
-		
+		util.doClick(Welcometxt);		
 	}
-	
-	
-	public boolean IsbotStarted()
+		
+	public boolean isBotStarted()
 	{
 		util.WaitForElementPresent(Constants.WaitTimeInSec, GetStartedPopUp);
 		Boolean IsBotStarted=driver.findElement(GetStartedPopUp).isDisplayed();
@@ -122,8 +111,7 @@ public class IraTestAgentPage extends BasePage {
 		}
 		return IsBotStarted;
 	}
-	
-	
+		
 	public void switchToAvaamoChatBot()
 	{
 		
@@ -142,14 +130,13 @@ public class IraTestAgentPage extends BasePage {
 		return defaulttxt;
 	}
 	
-	public void ToggleClick()
+	public void toggleClick()
 	{
 		util.doClick(togglemenu);
 	}
 	
 	public boolean sendIsEnabled()
-	{
-		
+	{		
 		return util.BtnIsEnabled(SendBtn);
 	}
 	
@@ -157,31 +144,26 @@ public class IraTestAgentPage extends BasePage {
 	{
 		if(sendIsEnabled())
 			util.SendMessage(Sendmessage, Constants.RenewPolicy);
-			util.doClick(SendBtn);
-		
+			util.doClick(SendBtn);		
 	}
 	
 	
-	public void getIraResponse()
+	public List<WebElement> getIraResponse()
 	{
 		 util.WaitForElementPresent(Constants.WaitTimeInSec, IraMessagelistresponse);
 		 List<WebElement> response=util.IraResponse(IraMessagelistresponse);
+		 return response;
 	}
 	
-	public String getClientResponse()
+	public List<WebElement> getClientResponse()
 	{
-		return util.IraResponse(CustomerMessagelistresponse).toString();
-	}
-	public String getBotResponse()
-	{
-		return util.IraResponse(IraMessagelistresponse).toString();
+		 util.WaitForElementPresent(Constants.WaitTimeInSec, IraMessagelistresponse);
+		 List<WebElement> response=util.IraResponse(IraMessagelistresponse);
+		 return response;
 	}
 	
-	public String getAllBotResponse()
-	{
-		return util.IraResponse(AllMessages).toString();
-	}
-	public void BotMenuClick()
+
+	public void botMenuClick()
 	{
 		util.BtnIsEnabled(SwitchToBot);
 		util.doClick(SwitchToBot);
@@ -189,7 +171,7 @@ public class IraTestAgentPage extends BasePage {
 	
 	public void StartOverClick()
 	{
-		BotMenuClick();
+		botMenuClick();
 		util.WaitForElementPresent(Constants.WaitTimeInSec, StartOver);
 		util.BtnIsEnabled(StartOver);
 		util.doClick(StartOver);
@@ -197,12 +179,11 @@ public class IraTestAgentPage extends BasePage {
 	
 
 	
-	public void ClickDownload()
+	public void clickDownload()
 	{
 		//TestAgentframe=driver.findElement(By.name("avaamoIframe"));
 		util.WaitForElementPresent(Constants.WaitTimeInSec, DownloadLink);
 		util.doClick(DownloadLink);
-	
 		util.IraGetWindowHandles(TestAgentframe);
 	}
 	
@@ -210,11 +191,9 @@ public class IraTestAgentPage extends BasePage {
 	public void clickLatestDownloadBtn()
 	{
 		util.WaitForElementPresent(Constants.WaitTimeInSec, DownloadPolicylist);
-		util.clickLatestDownloadBtn(DownloadPolicylist);
-		//TestAgentframe=driver.findElement(IraChatBot);
-		//util.WaitForElementPresent(Constants.WaitTimeInSec);
-		ClickDownload();
-		//util.IraGetWindowHandles(driver, TestAgentframe);
+		util.clickLatestDownloadBtn(DownloadPolicylist);		
+		clickDownload();
+	
 	}
 	
 	

@@ -35,70 +35,58 @@ public class IraChatBotTest {
 			driver=basepage.init_driver(browser);
 			String url=prop.getProperty("url");
 			driver.get(url);
-			try {
-				Thread.sleep(5000);
-			} catch (InterruptedException e) {
-				
-				e.printStackTrace();
-			}
 			TestAgentPage=new IraTestAgentPage(driver);
 		}
 
 		
-		@Test(priority=1)
-		public void verifyLoginPageTitle()
-		{
-			 String title=TestAgentPage.getPageTitle();
-			 Assert.assertEquals(title,Constants.IraPageTitle);
-			 System.out.println(title);
-		}
 		
-		@Test(priority=2)
-		public void verifyWelcomeMessage()
+		
+		@Test(priority=1,enabled=true)
+		public void verifyGetStarted()
 		{
 			 
 			boolean isDisplayed=TestAgentPage.iraNotificationPop();
 			Assert.assertTrue(isDisplayed);
 			String WelcomeMsg=TestAgentPage.getNotificationText();
+			if(WelcomeMsg!="")
+			{
 			Assert.assertEquals(WelcomeMsg, Constants.WelcomeMessage);
-						 
-		}
-		
-		
-		@Test(priority=3)
-		public void verifyNotificationClick()
-		{
+			System.out.println(WelcomeMsg);	
+			}
 			TestAgentPage.notificationMessageClick();
-			Assert.assertTrue(TestAgentPage.IsbotStarted());
-			
-		}
-		
-		
-		@Test(priority=4)
-		public void verifyGetStarted() throws InterruptedException
-		{
-			
+			Assert.assertTrue(TestAgentPage.isBotStarted());
 			TestAgentPage.switchToAvaamoChatBot();
-			TestAgentPage.getIraDefaultResponse();
-			
-				
 		}
-		@Test(priority=5)
+				
+	
+		@Test(priority=2,enabled=true)
+		public void verifyPageTitle()
+		{
+			 String title=TestAgentPage.getPageTitle();
+			 Assert.assertEquals(title,Constants.IraPageTitle);
+			 
+		}
+		@Test (priority=3,enabled=true, dependsOnMethods={"verifyGetStarted"})
+		public void verifyGetDefaultResponse()
+		{
+			TestAgentPage.getIraDefaultResponse();
+		}
+		@Test(priority=4,enabled=true, dependsOnMethods = { "verifyGetDefaultResponse" })
 		public void getMessagesFromBot()
 		{
-			TestAgentPage.ToggleClick();
+			TestAgentPage.toggleClick();
 			TestAgentPage.sendMessage();
 			TestAgentPage.getIraResponse();
 			
 		}
-		@Test(priority=6)
+		@Test(priority=5,enabled=true, dependsOnMethods = { "verifyGetDefaultResponse" })
 		public void getMenuOptions()
 		{
 			TestAgentPage.StartOverClick();
 			TestAgentPage.clickLatestDownloadBtn();
 			
 		}
-		@Test(priority=7)
+		@Test(priority=6,enabled=true, dependsOnMethods = { "verifyGetDefaultResponse" })
 		public void sendQueryTestBot() 
 		{
 			
@@ -106,12 +94,11 @@ public class IraChatBotTest {
 			
 			
 		}
-		@Test(priority=8)
+		@Test(priority=7,enabled=true,dependsOnMethods = { "verifyGetDefaultResponse" })
 		public void sendQueryNewTest() throws InterruptedException
 		{
 			
 			TestAgentPage.NewTestInput();
-			
 			
 		}
 		

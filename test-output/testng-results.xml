@@ -1,45 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="2" total="8" passed="6">
+<testng-results skipped="0" failed="0" ignored="0" total="7" passed="7">
   <reporter-output>
   </reporter-output>
-  <suite name="Ira Agent Test Suite" duration-ms="39786" started-at="2020-10-14T12:04:34Z" finished-at="2020-10-14T12:05:14Z">
+  <suite name="Ira Test Agent Suite" duration-ms="41180" started-at="2020-10-15T11:57:02Z" finished-at="2020-10-15T11:57:44Z">
     <groups>
     </groups>
-    <test name="IRA Test Agent regression Test" duration-ms="39786" started-at="2020-10-14T12:04:34Z" finished-at="2020-10-14T12:05:14Z">
+    <test name="IRA Test Agent regression Test" duration-ms="41180" started-at="2020-10-15T11:57:02Z" finished-at="2020-10-15T11:57:44Z">
       <class name="com.qa.avaamo.testPages.IraChatBotTest">
-        <test-method status="PASS" signature="setup()[pri:0, instance:com.qa.avaamo.testPages.IraChatBotTest@1da51a35]" name="setup" is-config="true" duration-ms="18279" started-at="2020-10-14T12:04:34Z" finished-at="2020-10-14T12:04:53Z">
+        <test-method status="PASS" signature="setup()[pri:0, instance:com.qa.avaamo.testPages.IraChatBotTest@6d3af739]" name="setup" is-config="true" duration-ms="10799" started-at="2020-10-15T11:57:02Z" finished-at="2020-10-15T11:57:13Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="verifyLoginPageTitle()[pri:1, instance:com.qa.avaamo.testPages.IraChatBotTest@1da51a35]" name="verifyLoginPageTitle" duration-ms="29" started-at="2020-10-14T12:04:53Z" finished-at="2020-10-14T12:04:53Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyLoginPageTitle -->
-        <test-method status="PASS" signature="verifyWelcomeMessage()[pri:2, instance:com.qa.avaamo.testPages.IraChatBotTest@1da51a35]" name="verifyWelcomeMessage" duration-ms="170" started-at="2020-10-14T12:04:53Z" finished-at="2020-10-14T12:04:53Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyWelcomeMessage -->
-        <test-method status="PASS" signature="verifyNotificationClick()[pri:3, instance:com.qa.avaamo.testPages.IraChatBotTest@1da51a35]" name="verifyNotificationClick" duration-ms="2740" started-at="2020-10-14T12:04:53Z" finished-at="2020-10-14T12:04:56Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyNotificationClick -->
-        <test-method status="PASS" signature="verifyGetStarted()[pri:4, instance:com.qa.avaamo.testPages.IraChatBotTest@1da51a35]" name="verifyGetStarted" duration-ms="1826" started-at="2020-10-14T12:04:56Z" finished-at="2020-10-14T12:04:58Z">
+        <test-method status="PASS" signature="verifyGetStarted()[pri:1, instance:com.qa.avaamo.testPages.IraChatBotTest@6d3af739]" name="verifyGetStarted" duration-ms="3474" started-at="2020-10-15T11:57:13Z" finished-at="2020-10-15T11:57:17Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyGetStarted -->
-        <test-method status="PASS" signature="getMessagesFromBot()[pri:5, instance:com.qa.avaamo.testPages.IraChatBotTest@1da51a35]" name="getMessagesFromBot" duration-ms="2220" started-at="2020-10-14T12:04:58Z" finished-at="2020-10-14T12:05:00Z">
+        <test-method status="PASS" signature="verifyPageTitle()[pri:2, instance:com.qa.avaamo.testPages.IraChatBotTest@6d3af739]" name="verifyPageTitle" duration-ms="15" started-at="2020-10-15T11:57:18Z" finished-at="2020-10-15T11:57:18Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyPageTitle -->
+        <test-method status="PASS" signature="verifyGetDefaultResponse()[pri:3, instance:com.qa.avaamo.testPages.IraChatBotTest@6d3af739]" name="verifyGetDefaultResponse" duration-ms="73" started-at="2020-10-15T11:57:18Z" depends-on-methods="com.qa.avaamo.testPages.IraChatBotTest.verifyGetStarted" finished-at="2020-10-15T11:57:19Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyGetDefaultResponse -->
+        <test-method status="PASS" signature="getMessagesFromBot()[pri:4, instance:com.qa.avaamo.testPages.IraChatBotTest@6d3af739]" name="getMessagesFromBot" duration-ms="2256" started-at="2020-10-15T11:57:19Z" depends-on-methods="com.qa.avaamo.testPages.IraChatBotTest.verifyGetDefaultResponse" finished-at="2020-10-15T11:57:21Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getMessagesFromBot -->
-        <test-method status="PASS" signature="sendQueryNewTest()[pri:8, instance:com.qa.avaamo.testPages.IraChatBotTest@1da51a35]" name="sendQueryNewTest" duration-ms="13670" started-at="2020-10-14T12:05:00Z" finished-at="2020-10-14T12:05:13Z">
+        <test-method status="PASS" signature="getMenuOptions()[pri:5, instance:com.qa.avaamo.testPages.IraChatBotTest@6d3af739]" name="getMenuOptions" duration-ms="4721" started-at="2020-10-15T11:57:21Z" depends-on-methods="com.qa.avaamo.testPages.IraChatBotTest.verifyGetDefaultResponse" finished-at="2020-10-15T11:57:26Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getMenuOptions -->
+        <test-method status="PASS" signature="sendQueryTestBot()[pri:6, instance:com.qa.avaamo.testPages.IraChatBotTest@6d3af739]" name="sendQueryTestBot" duration-ms="3597" started-at="2020-10-15T11:57:26Z" depends-on-methods="com.qa.avaamo.testPages.IraChatBotTest.verifyGetDefaultResponse" finished-at="2020-10-15T11:57:29Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- sendQueryTestBot -->
+        <test-method status="PASS" signature="sendQueryNewTest()[pri:7, instance:com.qa.avaamo.testPages.IraChatBotTest@6d3af739]" name="sendQueryNewTest" duration-ms="13146" started-at="2020-10-15T11:57:29Z" depends-on-methods="com.qa.avaamo.testPages.IraChatBotTest.verifyGetDefaultResponse" finished-at="2020-10-15T11:57:43Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- sendQueryNewTest -->
-        <test-method status="PASS" signature="teardown()[pri:0, instance:com.qa.avaamo.testPages.IraChatBotTest@1da51a35]" name="teardown" is-config="true" duration-ms="779" started-at="2020-10-14T12:05:13Z" finished-at="2020-10-14T12:05:14Z">
+        <test-method status="PASS" signature="teardown()[pri:0, instance:com.qa.avaamo.testPages.IraChatBotTest@6d3af739]" name="teardown" is-config="true" duration-ms="823" started-at="2020-10-15T11:57:43Z" finished-at="2020-10-15T11:57:44Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- teardown -->
       </class> <!-- com.qa.avaamo.testPages.IraChatBotTest -->
     </test> <!-- IRA Test Agent regression Test -->
-  </suite> <!-- Ira Agent Test Suite -->
+  </suite> <!-- Ira Test Agent Suite -->
 </testng-results>
